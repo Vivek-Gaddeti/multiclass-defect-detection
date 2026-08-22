@@ -1,0 +1,64 @@
+project:
+  name: "multiclass-industrial-defect-detection"
+  version: "1.0.0"
+  seed: 42
+
+dataset:
+  name: "NEU-DET"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  yaml_path: "data/dataset.yaml"
+  classes:
+    - "crazing"
+    - "inclusion"
+    - "patches"
+    - "pitted_surface"
+    - "rolled-in_scale"
+    - "scratches"
+  splits:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+model:
+  name: "yolo11n.pt"
+  image_size: 256
+  epochs: 10
+  batch_size: 16
+  workers: 2
+  device: "cpu"
+  confidence_threshold: 0.15
+  iou_threshold: 0.45
+
+postprocessing:
+  duplicate_iou_threshold: 0.45
+  min_confidence: 0.20
+  min_box_area_pixels: 25
+
+severity:
+  # Area percentage = (bbox_area / image_area) * 100
+  minor_max_percent: 1.0
+  moderate_max_percent: 5.0
+  # Anything >= moderate_max_percent is classified as "Severe"
+
+paths:
+  data_dir: "data"
+  artifacts_dir: "artifacts"
+  models_dir: "artifacts/models"
+  metrics_dir: "artifacts/metrics"
+  plots_dir: "artifacts/plots"
+  predictions_dir: "artifacts/predictions"
+
+mlflow:
+  experiment_name: "industrial-defect-detection"
+  tracking_uri: "sqlite:///mlflow.db"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  max_file_size_mb: 10
+  allowed_extensions:
+    - "jpg"
+    - "jpeg"
+    - "png"
+    - "webp"

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiclass Industrial Defect Detection & Analysis</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Navigation Bar -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-icon">🔍</div>
+        <div>
+          <h1>Industrial Defect Detection</h1>
+          <p class="subtitle">Automated Computer Vision & Severity Analysis System</p>
+        </div>
+      </div>
+      <div class="system-status">
+        <span class="status-indicator online"></span>
+        <span id="api-status-text">System Ready</span>
+        <a href="/docs" target="_blank" class="api-doc-link">API Docs &rarr;</a>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Control & Upload Panel -->
+      <section class="panel upload-panel">
+        <h2>1. Image Ingestion</h2>
+        
+        <div class="drop-zone" id="drop-zone">
+          <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden />
+          <div class="drop-zone-content">
+            <div class="upload-icon">📁</div>
+            <p class="primary-text">Drag & drop industrial surface image here</p>
+            <p class="secondary-text">or <button type="button" class="btn-link" id="browse-btn">Browse Local Files</button></p>
+            <span class="supported-formats">Supported: JPG, PNG, WEBP (Max 10MB)</span>
+          </div>
+          <div class="file-preview-card" id="file-preview-card" style="display: none;">
+            <img id="preview-thumbnail" src="" alt="Thumbnail" />
+            <div class="file-details">
+              <span id="preview-filename" class="filename">sample.jpg</span>
+              <span id="preview-filesize" class="filesize">142 KB</span>
+            </div>
+            <button type="button" class="btn-remove" id="remove-file-btn">&times;</button>
+          </div>
+        </div>
+
+        <!-- Inference Threshold Settings -->
+        <div class="threshold-controls">
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Confidence Threshold</span>
+              <span id="conf-val" class="val-badge">0.15</span>
+            </div>
+            <input type="range" id="conf-slider" min="0.05" max="0.90" step="0.05" value="0.15" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Duplicate Suppression (IoU)</span>
+              <span id="iou-val" class="val-badge">0.45</span>
+            </div>
+            <input type="range" id="iou-slider" min="0.10" max="0.80" step="0.05" value="0.45" />
+          </div>
+        </div>
+
+        <button type="button" id="analyze-btn" class="btn-primary" disabled>
+          <span class="btn-text">⚡ Analyze Surface Defect</span>
+          <span class="btn-spinner" style="display: none;"></span>
+        </button>
+      </section>
+
+      <!-- Results & Metrics Display -->
+      <section class="panel results-panel">
+        <h2>2. Inspection Analysis & Quality Assessment</h2>
+
+        <!-- Key Metrics Row -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-title">Defect Count</span>
+            <span class="metric-value" id="metric-count">--</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Overall Severity</span>
+            <span class="metric-value badge" id="metric-severity">--</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Affected Surface Area</span>
+            <span class="metric-value" id="metric-area">--</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Inference Latency</span>
+            <span class="metric-value" id="metric-latency">--</span>
+          </div>
+        </div>
+
+        <!-- Visual Inspection View -->
+        <div class="visualizer-container">
+          <div class="image-box">
+            <h3>Annotated Inspection Image</h3>
+            <div class="canvas-wrapper">
+              <div id="empty-state" class="empty-state">
+                <p>Upload and analyze an image to view bounding boxes and defect classifications.</p>
+              </div>
+              <img id="annotated-image" src="" alt="Annotated Result" style="display: none;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Defect Breakdown Table -->
+        <div class="table-container">
+          <h3>Detected Defect Breakdown</h3>
+          <div class="table-wrapper">
+            <table id="defects-table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>Confidence</th>
+                  <th>Severity</th>
+                  <th>Est. Area</th>
+                  <th>BBox (x1, y1, x2, y2)</th>
+                </tr>
+              </thead>
+              <tbody id="defects-table-body">
+                <tr>
+                  <td colspan="5" class="table-empty">No defects analyzed yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Raw JSON Accordion -->
+        <details class="json-details">
+          <summary>View Structured JSON Response</summary>
+          <pre id="json-output"><code>{ "status": "awaiting_input" }</code></pre>
+        </details>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Multiclass Industrial Defect Detection System | Production MLOps Engine</p>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

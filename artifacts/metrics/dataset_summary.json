@@ -1,0 +1,29 @@
+{
+  "dataset_name": "NEU-DET",
+  "total_images_processed": 240,
+  "split_counts": {
+    "train": 168,
+    "val": 36,
+    "test": 36
+  },
+  "class_annotation_counts": {
+    "crazing": 79,
+    "inclusion": 86,
+    "patches": 76,
+    "pitted_surface": 82,
+    "rolled-in_scale": 84,
+    "scratches": 80
+  },
+  "classes": [
+    "crazing",
+    "inclusion",
+    "patches",
+    "pitted_surface",
+    "rolled-in_scale",
+    "scratches"
+  ],
+  "invalid_or_skipped_files": 0,
+  "invalid_file_log": [],
+  "random_seed": 42,
+  "dataset_yaml": "data\\dataset.yaml"
+}

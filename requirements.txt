@@ -1,0 +1,23 @@
+# Core ML & Deep Learning
+torch>=2.2.0
+torchvision>=0.17.0
+ultralytics>=8.3.0
+
+# API & Server
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.6.0
+python-multipart>=0.0.9
+
+# MLOps & Tracking
+mlflow>=2.11.0
+
+# Image & Data Processing
+opencv-python-headless>=4.9.0.80
+pillow>=10.2.0
+numpy>=1.26.0
+pandas>=2.2.0
+scikit-learn>=1.4.0
+pyyaml>=6.0.1
+requests>=2.31.0
+tqdm>=4.66.0

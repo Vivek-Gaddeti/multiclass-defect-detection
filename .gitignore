@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# MLflow & Training Runs
+mlruns/
+mlflow.db
+.trash/
+runs/
+wandb/
+
+# Data & Large Weights (Keep structure via scripts)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+artifacts/models/*.pt
+!artifacts/models/.gitkeep
+
+# Predictions & generated images
+artifacts/predictions/*
+!artifacts/predictions/.gitkeep
+
+# Pre-trained base model (downloaded automatically by YOLO)
+yolo11n.pt
+*.pt
+!artifacts/models/.gitkeep
+
+# Operating System
+.DS_Store
+Thumbs.db
