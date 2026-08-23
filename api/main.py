@@ -81,17 +81,29 @@ async def lifespan(app: FastAPI):
     """Lifespan context manager: Load model once at startup and clean up on shutdown."""
     global predictor
     logger.info("Starting up Defect Detection API service...")
-    try:
-        predictor = DefectPredictor()
-        logger.info("DefectPredictor initialized successfully with model: %s", predictor.model_path)
-    except Exception as e:
-        logger.error("Failed to initialize DefectPredictor on startup: %s", e)
+
+    model_path = Path("artifacts/models/best.pt")
+    if not model_path.exists():
+        logger.warning(
+            "Model weights not found at %s. "
+            "API is running in DEGRADED mode — background training may be in progress. "
+            "The model will load automatically on the next /predict request once training completes.",
+            model_path,
+        )
         predictor = None
+    else:
+        try:
+            predictor = DefectPredictor()
+            logger.info("DefectPredictor initialized successfully with model: %s", predictor.model_path)
+        except Exception as e:
+            logger.error("Failed to initialize DefectPredictor on startup: %s", e)
+            predictor = None
 
     yield
 
     logger.info("Shutting down Defect Detection API service...")
     predictor = None
+
 
 
 # Initialize FastAPI App
@@ -169,11 +181,28 @@ async def predict_defect(
 ):
     """Accept an industrial surface image, detect defects, calculate surface area impact and severity."""
     global predictor
+
+    # Auto-reload model if background training just finished
+    if predictor is None:
+        model_path = Path("artifacts/models/best.pt")
+        if model_path.exists():
+            logger.info("Model weights detected — loading predictor now...")
+            try:
+                predictor = DefectPredictor()
+                logger.info("Predictor loaded successfully after background training.")
+            except Exception as e:
+                logger.error("Failed to load predictor: %s", e)
+
     if predictor is None:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Model is not ready for inference.",
+            detail=(
+                "Model is not ready yet. Background training is in progress. "
+                "Please wait 5–10 minutes and try again. "
+                "Check /health to see when model_loaded becomes true."
+            ),
         )
+
 
     # 1. Validate file extension
     filename = file.filename or "unknown.jpg"

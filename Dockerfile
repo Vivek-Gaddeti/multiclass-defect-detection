@@ -4,7 +4,7 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PORT=8000 \
+    PORT=10000 \
     HOST=0.0.0.0
 
 # Install system dependencies required by OpenCV and image processing
@@ -26,15 +26,19 @@ COPY configs/ ./configs/
 COPY src/ ./src/
 COPY api/ ./api/
 COPY frontend/ ./frontend/
+COPY scripts/ ./scripts/
 COPY artifacts/ ./artifacts/
-COPY data/dataset.yaml ./data/dataset.yaml
+COPY data/ ./data/
+
+# Make startup script executable
+RUN chmod +x scripts/startup.sh
 
 # Expose port
 EXPOSE 8000
 
 # Healthcheck
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=5 \
   CMD curl -f http://localhost:${PORT}/health || exit 1
 
-# Start FastAPI application with Uvicorn
-CMD uvicorn api.main:app --host 0.0.0.0 --port ${PORT}
+# Start using the startup script (trains model if missing, then serves API)
+CMD ["bash", "scripts/startup.sh"]
