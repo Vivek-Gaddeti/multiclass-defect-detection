@@ -1,28 +1,53 @@
 {
-  "model_path": "artifacts/models/best.pt",
+  "model_path": "artifacts/models/yolo11s_best.pt",
   "split": "test",
-  "precision": 0.937,
-  "recall": 0.7295,
-  "map50": 0.8646,
-  "map50_95": 0.6409,
+  "precision": 0.9586,
+  "recall": 0.869,
+  "f1_score": 0.9116,
+  "map50": 0.9479,
+  "map50_95": 0.7218,
   "per_class": {
     "crazing": {
-      "map50_95": 0.2083
+      "precision": 0.8489,
+      "recall": 0.7,
+      "f1_score": 0.7673,
+      "map50": 0.8247,
+      "map50_95": 0.2961
     },
     "inclusion": {
-      "map50_95": 0.8314
+      "precision": 0.9699,
+      "recall": 0.9231,
+      "f1_score": 0.9459,
+      "map50": 0.9367,
+      "map50_95": 0.8852
     },
     "patches": {
-      "map50_95": 0.9236
+      "precision": 0.9627,
+      "recall": 1.0,
+      "f1_score": 0.981,
+      "map50": 0.995,
+      "map50_95": 0.965
     },
     "pitted_surface": {
-      "map50_95": 0.4649
+      "precision": 1.0,
+      "recall": 0.7806,
+      "f1_score": 0.8768,
+      "map50": 0.963,
+      "map50_95": 0.4894
     },
     "rolled-in_scale": {
-      "map50_95": 0.7884
+      "precision": 0.9702,
+      "recall": 0.9167,
+      "f1_score": 0.9427,
+      "map50": 0.9888,
+      "map50_95": 0.9419
     },
     "scratches": {
-      "map50_95": 0.6287
+      "precision": 1.0,
+      "recall": 0.8937,
+      "f1_score": 0.9439,
+      "map50": 0.9794,
+      "map50_95": 0.7532
     }
   },
   "classes": [

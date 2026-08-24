@@ -1,15 +1,15 @@
 {
-  "model_name": "yolo11n.pt",
-  "epochs": 10,
+  "model_name": "yolo11s.pt",
+  "epochs": 15,
   "batch_size": 16,
   "image_size": 256,
   "device": "cpu",
-  "training_duration_seconds": 195.02,
+  "training_duration_seconds": 2778.57,
   "best_model_path": "artifacts\\models\\best.pt",
-  "run_id": "3199c1dcc5d8497cb23f2b983d195d6a",
-  "precision": 0.8566436552536554,
-  "recall": 0.6369660958162505,
-  "map50": 0.7756105634257099,
-  "map50_95": 0.5737643526721442,
-  "fitness": 0.5737643526721442
+  "run_id": "405f47b315df457a9614442925f7e45e",
+  "precision": 0.8236931689038091,
+  "recall": 0.8770356313182791,
+  "map50": 0.9024157055302332,
+  "map50_95": 0.7146076629388285,
+  "fitness": 0.7146076629388285
 }

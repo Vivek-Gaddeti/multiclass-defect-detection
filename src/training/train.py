@@ -35,15 +35,19 @@ def load_config(config_path: str = "configs/config.yaml") -> dict:
 
 def train_model(
     config_path: str = "configs/config.yaml",
+    model_name_override: Optional[str] = None,
     epochs_override: Optional[int] = None,
     batch_override: Optional[int] = None,
+    run_name: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Execute YOLO training and track results with MLflow.
 
     Args:
         config_path: Path to configuration file.
+        model_name_override: Optional YOLO model variant (e.g., 'yolo11n.pt', 'yolo11s.pt').
         epochs_override: Optional override for number of epochs.
         batch_override: Optional override for batch size.
+        run_name: Optional run name for logging and save directories.
 
     Returns:
         Summary dictionary containing training metrics and artifact locations.
@@ -59,12 +63,13 @@ def train_model(
 
     # Dataset & Training hyperparameters
     dataset_yaml = config["dataset"]["yaml_path"]
-    model_name = config["model"].get("name", "yolo11n.pt")
+    model_name = model_name_override or config["model"].get("name", "yolo11n.pt")
     epochs = epochs_override or config["model"].get("epochs", 15)
     batch_size = batch_override or config["model"].get("batch_size", 8)
-    imgsz = config["model"].get("image_size", 640)
+    imgsz = config["model"].get("image_size", 256)
     seed = config["project"].get("seed", 42)
     device = "0" if torch.cuda.is_available() else "cpu"
+    exp_run_name = run_name or f"train_{Path(model_name).stem}"
 
     logger.info("Initializing YOLO model '%s' on device '%s'...", model_name, device)
     model = YOLO(model_name)
@@ -105,7 +110,7 @@ def train_model(
         seed=seed,
         device=device,
         project="runs/detect",
-        name="defect_model",
+        name=exp_run_name,
         exist_ok=True,
         verbose=True,
         workers=2,
@@ -115,19 +120,23 @@ def train_model(
     logger.info("Training completed in %.2f seconds.", training_duration_sec)
 
     # Locate and copy best and last model weights
-    save_dir = Path(model.trainer.save_dir) if hasattr(model, "trainer") and hasattr(model.trainer, "save_dir") else Path("runs/detect/defect_model")
+    save_dir = Path(model.trainer.save_dir) if hasattr(model, "trainer") and hasattr(model.trainer, "save_dir") else Path("runs/detect") / exp_run_name
     best_weights_src = save_dir / "weights" / "best.pt"
     last_weights_src = save_dir / "weights" / "last.pt"
 
+    stem = Path(model_name).stem
+    dest_specific = models_dir / f"{stem}_best.pt"
     dest_best = models_dir / "best.pt"
-    dest_last = models_dir / "last.pt"
+    dest_last = models_dir / f"{stem}_last.pt"
 
     if best_weights_src.exists():
+        shutil.copy2(best_weights_src, dest_specific)
         shutil.copy2(best_weights_src, dest_best)
-        logger.info("Saved best model to %s", dest_best)
+        logger.info("Saved best model to %s and %s", dest_specific, dest_best)
     elif last_weights_src.exists():
+        shutil.copy2(last_weights_src, dest_specific)
         shutil.copy2(last_weights_src, dest_best)
-        logger.info("Saved last model as best to %s", dest_best)
+        logger.info("Saved last model as best to %s and %s", dest_specific, dest_best)
 
     if last_weights_src.exists():
         shutil.copy2(last_weights_src, dest_last)

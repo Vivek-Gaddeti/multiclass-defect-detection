@@ -1,0 +1,19 @@
+{
+  "model_path": "artifacts/models/yolo11s_best.pt",
+  "model_name": "yolo11s_best",
+  "model_size_mb": 18.25,
+  "parameter_count": 9430114,
+  "device": "cpu",
+  "image_size": 256,
+  "warmup_runs": 10,
+  "measured_runs": 50,
+  "latency_ms": {
+    "mean": 53.81,
+    "std": 3.33,
+    "p50_median": 52.87,
+    "p95": 60.59,
+    "min": 48.58,
+    "max": 62.17
+  },
+  "throughput_fps": 18.58
+}
