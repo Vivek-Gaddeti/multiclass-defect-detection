@@ -8,12 +8,12 @@
   "warmup_runs": 10,
   "measured_runs": 50,
   "latency_ms": {
-    "mean": 53.81,
-    "std": 3.33,
-    "p50_median": 52.87,
-    "p95": 60.59,
-    "min": 48.58,
-    "max": 62.17
+    "mean": 46.49,
+    "std": 2.28,
+    "p50_median": 46.28,
+    "p95": 50.66,
+    "min": 43.43,
+    "max": 56.02
   },
-  "throughput_fps": 18.58
+  "throughput_fps": 21.51
 }

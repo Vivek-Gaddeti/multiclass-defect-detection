@@ -55,6 +55,7 @@ data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+data/NEU-DET/
 artifacts/models/*.pt
 !artifacts/models/.gitkeep
 

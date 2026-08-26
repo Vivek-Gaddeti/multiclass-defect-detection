@@ -5,7 +5,7 @@ project:
 
 dataset:
   name: "NEU-DET"
-  raw_dir: "data/raw"
+  raw_dir: "data/NEU-DET"
   processed_dir: "data/processed"
   yaml_path: "data/dataset.yaml"
   classes:

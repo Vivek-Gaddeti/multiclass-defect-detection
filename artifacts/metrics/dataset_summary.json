@@ -1,18 +1,18 @@
 {
   "dataset_name": "NEU-DET",
-  "total_images_processed": 240,
+  "total_images_processed": 1800,
   "split_counts": {
-    "train": 168,
-    "val": 36,
-    "test": 36
+    "train": 1260,
+    "val": 270,
+    "test": 270
   },
   "class_annotation_counts": {
-    "crazing": 79,
-    "inclusion": 86,
-    "patches": 76,
-    "pitted_surface": 82,
-    "rolled-in_scale": 84,
-    "scratches": 80
+    "crazing": 689,
+    "inclusion": 1011,
+    "patches": 881,
+    "pitted_surface": 432,
+    "rolled-in_scale": 628,
+    "scratches": 548
   },
   "classes": [
     "crazing",

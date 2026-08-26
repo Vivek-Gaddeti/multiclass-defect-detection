@@ -1,9 +1,9 @@
 {
   "model_path": "artifacts/models/yolo11s_best.pt",
   "dataset_split": "test",
-  "total_test_images": 36,
-  "total_ground_truth_defects": 71,
-  "total_predicted_defects": 82,
+  "total_test_images": 270,
+  "total_ground_truth_defects": 639,
+  "total_predicted_defects": 1006,
   "iou_match_threshold": 0.45,
   "confidence_threshold": 0.15,
   "class_names": [
@@ -17,117 +17,117 @@
   ],
   "confusion_matrix": [
     [
-      8,
+      65,
       0,
       0,
       0,
       0,
       0,
+      36
+    ],
+    [
+      0,
+      125,
+      1,
+      0,
+      0,
+      0,
+      31
+    ],
+    [
+      0,
+      0,
+      120,
+      0,
+      0,
+      0,
+      15
+    ],
+    [
+      0,
+      1,
+      0,
+      53,
+      0,
+      0,
+      14
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      72,
+      0,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      72,
       2
     ],
     [
-      0,
-      12,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    [
-      0,
-      0,
-      10,
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      0,
-      0,
-      12,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      11,
-      0,
-      1
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      13,
-      1
-    ],
-    [
-      11,
-      0,
-      0,
-      5,
-      0,
-      0,
+      151,
+      109,
+      66,
+      29,
+      84,
+      58,
       0
     ]
   ],
   "per_class_diagnostics": {
     "crazing": {
-      "true_positives": 8,
-      "false_positives": 11,
-      "false_negatives": 2,
-      "precision": 0.4211,
-      "recall": 0.8,
-      "f1_score": 0.5517
+      "true_positives": 65,
+      "false_positives": 151,
+      "false_negatives": 36,
+      "precision": 0.3009,
+      "recall": 0.6436,
+      "f1_score": 0.4101
     },
     "inclusion": {
-      "true_positives": 12,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "precision": 1.0,
-      "recall": 0.9231,
-      "f1_score": 0.96
+      "true_positives": 125,
+      "false_positives": 110,
+      "false_negatives": 32,
+      "precision": 0.5319,
+      "recall": 0.7962,
+      "f1_score": 0.6378
     },
     "patches": {
-      "true_positives": 10,
-      "false_positives": 0,
-      "false_negatives": 0,
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1_score": 1.0
+      "true_positives": 120,
+      "false_positives": 67,
+      "false_negatives": 15,
+      "precision": 0.6417,
+      "recall": 0.8889,
+      "f1_score": 0.7453
     },
     "pitted_surface": {
-      "true_positives": 12,
-      "false_positives": 5,
-      "false_negatives": 0,
-      "precision": 0.7059,
-      "recall": 1.0,
-      "f1_score": 0.8276
+      "true_positives": 53,
+      "false_positives": 29,
+      "false_negatives": 15,
+      "precision": 0.6463,
+      "recall": 0.7794,
+      "f1_score": 0.7067
     },
     "rolled-in_scale": {
-      "true_positives": 11,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "precision": 1.0,
-      "recall": 0.9167,
-      "f1_score": 0.9565
+      "true_positives": 72,
+      "false_positives": 84,
+      "false_negatives": 32,
+      "precision": 0.4615,
+      "recall": 0.6923,
+      "f1_score": 0.5538
     },
     "scratches": {
-      "true_positives": 13,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "precision": 1.0,
-      "recall": 0.9286,
-      "f1_score": 0.963
+      "true_positives": 72,
+      "false_positives": 58,
+      "false_negatives": 2,
+      "precision": 0.5538,
+      "recall": 0.973,
+      "f1_score": 0.7059
     }
   },
   "primary_failure_modes": {
@@ -138,74 +138,34 @@
     "rolled-in_scale": "High recall; dark elongated oxide press marks are easily distinguished from clean steel.",
     "scratches": "Occasional boundary splitting where a single long linear scratch is parsed into multiple overlapping bounding boxes."
   },
-  "detailed_sample_errors_count": 21,
+  "detailed_sample_errors_count": 629,
   "sample_errors": [
     {
-      "image": "crazing_002.jpg",
+      "image": "crazing_101.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
       "pred_class": "crazing",
-      "confidence": 0.5601,
-      "iou": 0.0
+      "confidence": 0.3147,
+      "iou": 0.4275
     },
     {
-      "image": "crazing_002.jpg",
+      "image": "crazing_101.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
       "pred_class": "crazing",
-      "confidence": 0.3181,
-      "iou": 0.0
+      "confidence": 0.2504,
+      "iou": 0.2159
     },
     {
-      "image": "crazing_002.jpg",
+      "image": "crazing_101.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
       "pred_class": "crazing",
-      "confidence": 0.3021,
-      "iou": 0.0
+      "confidence": 0.1713,
+      "iou": 0.3297
     },
     {
-      "image": "crazing_002.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "crazing",
-      "confidence": 0.2608,
-      "iou": 0.0
-    },
-    {
-      "image": "crazing_002.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "crazing",
-      "confidence": 0.1599,
-      "iou": 0.0
-    },
-    {
-      "image": "crazing_008.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "crazing",
-      "confidence": 0.1655,
-      "iou": 0.0
-    },
-    {
-      "image": "crazing_009.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "crazing",
-      "confidence": 0.5149,
-      "iou": 0.0
-    },
-    {
-      "image": "crazing_016.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "crazing",
-      "confidence": 0.3026,
-      "iou": 0.0
-    },
-    {
-      "image": "crazing_016.jpg",
+      "image": "crazing_101.jpg",
       "type": "FALSE_NEGATIVE_MISSED",
       "gt_class": "crazing",
       "pred_class": "missed",
@@ -213,31 +173,47 @@
       "iou": 0.0
     },
     {
-      "image": "crazing_018.jpg",
+      "image": "crazing_11.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
       "pred_class": "crazing",
-      "confidence": 0.4463,
-      "iou": 0.3458
+      "confidence": 0.2469,
+      "iou": 0.1966
     },
     {
-      "image": "crazing_018.jpg",
+      "image": "crazing_11.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
       "pred_class": "crazing",
-      "confidence": 0.3909,
-      "iou": 0.369
+      "confidence": 0.2095,
+      "iou": 0.3969
     },
     {
-      "image": "crazing_018.jpg",
+      "image": "crazing_11.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
       "pred_class": "crazing",
-      "confidence": 0.1858,
-      "iou": 0.1457
+      "confidence": 0.1969,
+      "iou": 0.0
     },
     {
-      "image": "crazing_018.jpg",
+      "image": "crazing_11.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.1717,
+      "iou": 0.0
+    },
+    {
+      "image": "crazing_11.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.1535,
+      "iou": 0.1251
+    },
+    {
+      "image": "crazing_11.jpg",
       "type": "FALSE_NEGATIVE_MISSED",
       "gt_class": "crazing",
       "pred_class": "missed",
@@ -245,59 +221,83 @@
       "iou": 0.0
     },
     {
-      "image": "inclusion_040.jpg",
+      "image": "crazing_11.jpg",
       "type": "FALSE_NEGATIVE_MISSED",
-      "gt_class": "inclusion",
+      "gt_class": "crazing",
       "pred_class": "missed",
       "confidence": 0.0,
       "iou": 0.0
     },
     {
-      "image": "pitted_surface_004.jpg",
+      "image": "crazing_110.jpg",
       "type": "FALSE_POSITIVE",
       "gt_class": "background",
-      "pred_class": "pitted_surface",
-      "confidence": 0.2115,
+      "pred_class": "crazing",
+      "confidence": 0.262,
       "iou": 0.0
     },
     {
-      "image": "pitted_surface_004.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "pitted_surface",
-      "confidence": 0.1806,
-      "iou": 0.0
-    },
-    {
-      "image": "pitted_surface_006.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "pitted_surface",
-      "confidence": 0.5657,
-      "iou": 0.0
-    },
-    {
-      "image": "pitted_surface_006.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "pitted_surface",
-      "confidence": 0.2448,
-      "iou": 0.0
-    },
-    {
-      "image": "pitted_surface_008.jpg",
-      "type": "FALSE_POSITIVE",
-      "gt_class": "background",
-      "pred_class": "pitted_surface",
-      "confidence": 0.448,
-      "iou": 0.0
-    },
-    {
-      "image": "rolled-in_scale_034.jpg",
+      "image": "crazing_110.jpg",
       "type": "FALSE_NEGATIVE_MISSED",
-      "gt_class": "rolled-in_scale",
+      "gt_class": "crazing",
       "pred_class": "missed",
       "confidence": 0.0,
+      "iou": 0.0
+    },
+    {
+      "image": "crazing_110.jpg",
+      "type": "FALSE_NEGATIVE_MISSED",
+      "gt_class": "crazing",
+      "pred_class": "missed",
+      "confidence": 0.0,
+      "iou": 0.0
+    },
+    {
+      "image": "crazing_112.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.3156,
+      "iou": 0.288
+    },
+    {
+      "image": "crazing_112.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.1984,
+      "iou": 0.2648
+    },
+    {
+      "image": "crazing_112.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.1681,
+      "iou": 0.0
+    },
+    {
+      "image": "crazing_112.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.1556,
+      "iou": 0.1686
+    },
+    {
+      "image": "crazing_112.jpg",
+      "type": "FALSE_NEGATIVE_MISSED",
+      "gt_class": "patches",
+      "pred_class": "missed",
+      "confidence": 0.0,
+      "iou": 0.0
+    },
+    {
+      "image": "crazing_113.jpg",
+      "type": "FALSE_POSITIVE",
+      "gt_class": "background",
+      "pred_class": "crazing",
+      "confidence": 0.2539,
       "iou": 0.0
     }
   ]

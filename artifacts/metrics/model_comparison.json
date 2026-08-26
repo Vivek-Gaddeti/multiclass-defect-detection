@@ -4,57 +4,57 @@
     "weights_path": "artifacts/models/yolo11n_best.pt",
     "parameters": 2591010,
     "model_size_mb": 5.17,
-    "test_precision": 0.8602,
-    "test_recall": 0.8923,
-    "test_f1_score": 0.8759,
-    "test_map50": 0.9329,
-    "test_map50_95": 0.6913,
-    "latency_mean_ms": 39.89,
-    "latency_p50_ms": 39.48,
-    "latency_p95_ms": 45.39,
-    "throughput_fps": 25.07,
+    "test_precision": 0.6115,
+    "test_recall": 0.6872,
+    "test_f1_score": 0.6471,
+    "test_map50": 0.7035,
+    "test_map50_95": 0.3808,
+    "latency_mean_ms": 27.25,
+    "latency_p50_ms": 25.54,
+    "latency_p95_ms": 38.73,
+    "throughput_fps": 36.7,
     "per_class": {
       "crazing": {
-        "precision": 0.7386,
-        "recall": 0.8497,
-        "f1_score": 0.7902,
-        "map50": 0.9377,
-        "map50_95": 0.437
+        "precision": 0.5832,
+        "recall": 0.198,
+        "f1_score": 0.2956,
+        "map50": 0.3704,
+        "map50_95": 0.1139
       },
       "inclusion": {
-        "precision": 0.9372,
-        "recall": 0.9231,
-        "f1_score": 0.9301,
-        "map50": 0.9318,
-        "map50_95": 0.8536
+        "precision": 0.6245,
+        "recall": 0.8025,
+        "f1_score": 0.7024,
+        "map50": 0.8045,
+        "map50_95": 0.4299
       },
       "patches": {
-        "precision": 0.9348,
-        "recall": 1.0,
-        "f1_score": 0.9663,
-        "map50": 0.995,
-        "map50_95": 0.9317
+        "precision": 0.6769,
+        "recall": 0.9104,
+        "f1_score": 0.7765,
+        "map50": 0.884,
+        "map50_95": 0.5553
       },
       "pitted_surface": {
-        "precision": 0.7632,
-        "recall": 0.8074,
-        "f1_score": 0.7847,
-        "map50": 0.8788,
-        "map50_95": 0.4331
+        "precision": 0.6998,
+        "recall": 0.7543,
+        "f1_score": 0.726,
+        "map50": 0.7942,
+        "map50_95": 0.4795
       },
       "rolled-in_scale": {
-        "precision": 0.9067,
-        "recall": 0.9167,
-        "f1_score": 0.9117,
-        "map50": 0.9206,
-        "map50_95": 0.7925
+        "precision": 0.4769,
+        "recall": 0.4712,
+        "f1_score": 0.474,
+        "map50": 0.4687,
+        "map50_95": 0.1986
       },
       "scratches": {
-        "precision": 0.8803,
-        "recall": 0.8571,
-        "f1_score": 0.8686,
-        "map50": 0.9337,
-        "map50_95": 0.6998
+        "precision": 0.6076,
+        "recall": 0.9865,
+        "f1_score": 0.752,
+        "map50": 0.8992,
+        "map50_95": 0.5076
       }
     }
   },
@@ -63,57 +63,57 @@
     "weights_path": "artifacts/models/yolo11s_best.pt",
     "parameters": 9430114,
     "model_size_mb": 18.25,
-    "test_precision": 0.9586,
-    "test_recall": 0.869,
-    "test_f1_score": 0.9116,
-    "test_map50": 0.9479,
-    "test_map50_95": 0.7218,
-    "latency_mean_ms": 53.81,
-    "latency_p50_ms": 52.87,
-    "latency_p95_ms": 60.59,
-    "throughput_fps": 18.58,
+    "test_precision": 0.6457,
+    "test_recall": 0.6767,
+    "test_f1_score": 0.6608,
+    "test_map50": 0.7055,
+    "test_map50_95": 0.386,
+    "latency_mean_ms": 46.49,
+    "latency_p50_ms": 46.28,
+    "latency_p95_ms": 50.66,
+    "throughput_fps": 21.51,
     "per_class": {
       "crazing": {
-        "precision": 0.8489,
-        "recall": 0.7,
-        "f1_score": 0.7673,
-        "map50": 0.8247,
-        "map50_95": 0.2961
+        "precision": 0.5144,
+        "recall": 0.2475,
+        "f1_score": 0.3342,
+        "map50": 0.3346,
+        "map50_95": 0.1189
       },
       "inclusion": {
-        "precision": 0.9699,
-        "recall": 0.9231,
-        "f1_score": 0.9459,
-        "map50": 0.9367,
-        "map50_95": 0.8852
+        "precision": 0.6331,
+        "recall": 0.7962,
+        "f1_score": 0.7053,
+        "map50": 0.8002,
+        "map50_95": 0.4204
       },
       "patches": {
-        "precision": 0.9627,
-        "recall": 1.0,
-        "f1_score": 0.981,
-        "map50": 0.995,
-        "map50_95": 0.965
+        "precision": 0.7767,
+        "recall": 0.8823,
+        "f1_score": 0.8261,
+        "map50": 0.9199,
+        "map50_95": 0.5636
       },
       "pitted_surface": {
-        "precision": 1.0,
-        "recall": 0.7806,
-        "f1_score": 0.8768,
-        "map50": 0.963,
-        "map50_95": 0.4894
+        "precision": 0.7944,
+        "recall": 0.75,
+        "f1_score": 0.7715,
+        "map50": 0.8177,
+        "map50_95": 0.4719
       },
       "rolled-in_scale": {
-        "precision": 0.9702,
-        "recall": 0.9167,
-        "f1_score": 0.9427,
-        "map50": 0.9888,
-        "map50_95": 0.9419
+        "precision": 0.5133,
+        "recall": 0.4519,
+        "f1_score": 0.4807,
+        "map50": 0.4541,
+        "map50_95": 0.1744
       },
       "scratches": {
-        "precision": 1.0,
-        "recall": 0.8937,
-        "f1_score": 0.9439,
-        "map50": 0.9794,
-        "map50_95": 0.7532
+        "precision": 0.6423,
+        "recall": 0.9324,
+        "f1_score": 0.7607,
+        "map50": 0.9069,
+        "map50_95": 0.5669
       }
     }
   }

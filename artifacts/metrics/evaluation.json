@@ -1,53 +1,53 @@
 {
   "model_path": "artifacts/models/yolo11s_best.pt",
   "split": "test",
-  "precision": 0.9586,
-  "recall": 0.869,
-  "f1_score": 0.9116,
-  "map50": 0.9479,
-  "map50_95": 0.7218,
+  "precision": 0.6457,
+  "recall": 0.6767,
+  "f1_score": 0.6608,
+  "map50": 0.7055,
+  "map50_95": 0.386,
   "per_class": {
     "crazing": {
-      "precision": 0.8489,
-      "recall": 0.7,
-      "f1_score": 0.7673,
-      "map50": 0.8247,
-      "map50_95": 0.2961
+      "precision": 0.5144,
+      "recall": 0.2475,
+      "f1_score": 0.3342,
+      "map50": 0.3346,
+      "map50_95": 0.1189
     },
     "inclusion": {
-      "precision": 0.9699,
-      "recall": 0.9231,
-      "f1_score": 0.9459,
-      "map50": 0.9367,
-      "map50_95": 0.8852
+      "precision": 0.6331,
+      "recall": 0.7962,
+      "f1_score": 0.7053,
+      "map50": 0.8002,
+      "map50_95": 0.4204
     },
     "patches": {
-      "precision": 0.9627,
-      "recall": 1.0,
-      "f1_score": 0.981,
-      "map50": 0.995,
-      "map50_95": 0.965
+      "precision": 0.7767,
+      "recall": 0.8823,
+      "f1_score": 0.8261,
+      "map50": 0.9199,
+      "map50_95": 0.5636
     },
     "pitted_surface": {
-      "precision": 1.0,
-      "recall": 0.7806,
-      "f1_score": 0.8768,
-      "map50": 0.963,
-      "map50_95": 0.4894
+      "precision": 0.7944,
+      "recall": 0.75,
+      "f1_score": 0.7715,
+      "map50": 0.8177,
+      "map50_95": 0.4719
     },
     "rolled-in_scale": {
-      "precision": 0.9702,
-      "recall": 0.9167,
-      "f1_score": 0.9427,
-      "map50": 0.9888,
-      "map50_95": 0.9419
+      "precision": 0.5133,
+      "recall": 0.4519,
+      "f1_score": 0.4807,
+      "map50": 0.4541,
+      "map50_95": 0.1744
     },
     "scratches": {
-      "precision": 1.0,
-      "recall": 0.8937,
-      "f1_score": 0.9439,
-      "map50": 0.9794,
-      "map50_95": 0.7532
+      "precision": 0.6423,
+      "recall": 0.9324,
+      "f1_score": 0.7607,
+      "map50": 0.9069,
+      "map50_95": 0.5669
     }
   },
   "classes": [

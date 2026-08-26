@@ -103,7 +103,10 @@ def prepare_dataset(config_path: str = "configs/config.yaml") -> Dict[str, Any]:
     # Filter out any files in processed or non-raw
     raw_images = [p for p in raw_images if "processed" not in str(p)]
 
-    logger.info("Found %d raw image files.", len(raw_images))
+    # Pre-index all XML annotations for O(1) instant lookup
+    xml_map = {x.stem: x for x in raw_dir.rglob("*.xml") if "processed" not in str(x)}
+
+    logger.info("Found %d raw image files and %d XML annotation files.", len(raw_images), len(xml_map))
 
     valid_samples: List[Dict[str, Any]] = []
     invalid_files: List[str] = []
@@ -111,13 +114,11 @@ def prepare_dataset(config_path: str = "configs/config.yaml") -> Dict[str, Any]:
 
     for img_path in raw_images:
         stem = img_path.stem
-        # Look for corresponding xml file in raw_dir
-        xml_candidates = list(raw_dir.glob(f"**/{stem}.xml"))
-        if not xml_candidates:
+        if stem not in xml_map:
             invalid_files.append(f"Missing XML for {img_path.name}")
             continue
 
-        xml_path = xml_candidates[0]
+        xml_path = xml_map[stem]
 
         # Verify image readability
         try:
